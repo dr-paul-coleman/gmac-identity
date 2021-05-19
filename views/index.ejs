@@ -9,7 +9,7 @@
 
       <!-- Salesforce Embedded Log In Config -->
     <meta name="salesforce-community" content="<%= community_url%>">
-    <meta name="salesforce-client-id" content="<%= app_id%>">
+    <meta name="salesforce-client-id" content="<%= consumer_key%>">
     <meta name="salesforce-redirect-uri" content="<%= callback_url%>">
     <meta name="salesforce-forgot-password-enabled" content="true">
     <meta name="salesforce-logout-on-browser-close" content="true">
@@ -144,7 +144,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.9.1/jsforce.min.js"></script>
     <script>
         jsforce.browser.init({
-            clientId: "<%= app_id%>",
+            clientId: "<%= consumer_key%>",
             redirectUri: "<%= callback_url%>",
             loginUrl : "<%= community_url%>"
         });

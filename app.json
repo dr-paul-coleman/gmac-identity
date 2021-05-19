@@ -6,11 +6,11 @@
     "keywords": ["node", "express", "heroku", "salesforce"],
     "image": "heroku/nodejs",
     "env" :{
-      "APP_ID" : {
+      "CONSUMER_KEY" : {
         "description": "The Consumer Key of your Salesforce Connected App",
         "value": "Your value here"
       },
-      "APP_SECRET" : {
+      "CONSUMER_SECRET" : {
         "description": "The Consumer Secret of your Salesforce Connected App",
         "value": "Your value here"
       },
@@ -28,10 +28,6 @@
       },
       "BG_FAKE" : {
         "description": "The URL to your community, without any trailing characters.",
-        "value": "Your value here"
-      },
-      "STATIC_ASSET_URL" : {
-        "description": "The URL to your hosted version of sfdc_authmagic.js from the repo.",
         "value": "Your value here"
       }
     }

@@ -39,7 +39,7 @@ app.get('/', function(req, res){
 
     res.render('index', {
         community_url: COMMUNITY_URL,
-        CONSUMER_KEY: CONSUMER_KEY,
+        consumer_key: CONSUMER_KEY,
         callback_url: OAUTH_CALLBACK_URL,
         background: BG_FAKE
     })
@@ -134,7 +134,7 @@ app.get('/server_callback', function(req, res){
             sessionContact = response.custom_attributes.ContactID;
             res.render('server_callback', {
                 community_url: COMMUNITY_URL,
-                CONSUMER_KEY: CONSUMER_KEY,
+                consumer_key: CONSUMER_KEY,
                 callback_url: OAUTH_CALLBACK_URL,
                 start_url: startURL,
                 hosted_app_url: HOSTED_APP_URL,
@@ -164,7 +164,7 @@ app.get('/logout', function(req, res){
 
     res.render('logout', {
         community_url: COMMUNITY_URL,
-        CONSUMER_KEY: CONSUMER_KEY,
+        consumer_key: CONSUMER_KEY,
         callback_url: OAUTH_CALLBACK_URL,
         background: BG_FAKE
     })
