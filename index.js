@@ -41,75 +41,9 @@ app.get('/', function(req, res){
         community_url: COMMUNITY_URL,
         CONSUMER_KEY: CONSUMER_KEY,
         callback_url: OAUTH_CALLBACK_URL,
-        background: BG_FAKE,
-        static_asset_url: STATIC_ASSET_URL
-    }) 
-}); 
-
-app.get('/profile', function(req, res){ 
-
-    // Check loken
-    console.log("Profile Render: Double-checking access is valid. Session equals " + accessToken)
-
-    // Redirect if the access token is missing
-    if(accessToken == null || accessToken == "") {
-        res.redirect('/');
-    }
-
-    //Proceed with it then
-    var conn = new jsforce.Connection({
-        instanceUrl : COMMUNITY_URL,
-        accessToken : accessToken
-    });
-
-    console.log("Profile Render: Fetching profile information...")
-
-    //Grab Contact
-    let contactRecords = [];
-    conn.identity(function (err, res) {
-        if (err) {
-            console.error(err);
-        } else {
-            console.log("Profile Render: User identity..." + JSON.stringify(res));
-
-            conn.query("SELECT Id, FirstName, LastName, Phone, Email FROM Contact WHERE Id IN (SELECT ContactId FROM User WHERE Id = '"+res.user_id+"') LIMIT 1", function (err, result) {
-                if (err) {
-                    return console.error(err);
-                }
-                console.log("Profile Render: Contact result size is " + result.totalSize);
-                console.log("Profile Render: Number of contacts found is " + result.records.length);
-
-                contactRecords = result.records;
-                console.log("Profile Render: Contact retrieved " + JSON.stringify(contactRecords));
-                console.log("Profile Render: Contact has external ID of " + contactRecords[0].customerID__c);
-
-                //Render the page once records are fetched
-                res.render('profile', {
-                    community_url: COMMUNITY_URL,
-                    CONSUMER_KEY: CONSUMER_KEY,
-                    callback_url: OAUTH_CALLBACK_URL,
-                    background: BG_FAKE,
-                    static_asset_url: STATIC_ASSET_URL,
-                    contactRecords: contactRecords,
-                    bookingRecords: [],
-                    searchRecords: [],
-                    wishes: []
-                })
-            });
-        } //else identity query res
-    });
+        background: BG_FAKE
+    })
 });
-
-app.get('/_callback', function(req, res){ 
-
-    res.render('callback', {
-        community_url: COMMUNITY_URL,
-        CONSUMER_KEY: CONSUMER_KEY,
-        callback_url: OAUTH_CALLBACK_URL,
-        hosted_app_url: HOSTED_APP_URL,
-        static_asset_url: STATIC_ASSET_URL
-    }) 
-}); 
 
 app.get('/server_callback', function(req, res){ 
 
@@ -204,7 +138,6 @@ app.get('/server_callback', function(req, res){
                 callback_url: OAUTH_CALLBACK_URL,
                 start_url: startURL,
                 hosted_app_url: HOSTED_APP_URL,
-                static_asset_url: STATIC_ASSET_URL,
                 identity_response: Buffer.from(JSONidentityResponse).toString("base64")
             }) 
 
@@ -233,9 +166,8 @@ app.get('/logout', function(req, res){
         community_url: COMMUNITY_URL,
         CONSUMER_KEY: CONSUMER_KEY,
         callback_url: OAUTH_CALLBACK_URL,
-        background: BG_FAKE,
-        static_asset_url: STATIC_ASSET_URL
-    }) 
+        background: BG_FAKE
+    })
 
 });
 
