@@ -1,0 +1,2 @@
+redir url pattern for frontdoor access
+https://sdodemo-main-166ce2cf6b6-16b-179814ac144.force.com/identity/secur/frontdoor.jsp?sid=[access_token]]&retURL=/index
