@@ -152,11 +152,20 @@
         jsforce.browser.on('connect', function(conn) {
             Ext.util.Cookies.set('accessToken');
             Ext.util.Cookies.set('instanceURL');
-
-            conn.query('SELECT Id, FirstName, LastName, Account.Name FROM Contact', function(err, res) {
-                if (err) { return console.error(err); }
-                console.log(res);
-            });
+            try
+            {
+                conn.query( 'SELECT Id, FirstName, LastName, Account.Name FROM Contact', function (err, res)
+                {
+                    if ( err )
+                    {
+                        return console.error( err );
+                    }
+                    console.log( res );
+                } );
+            } catch( err )
+            {
+                console.error(err);
+            }
         });
 
     </script>
